@@ -71,6 +71,7 @@ export function CreateAdModal() {
             </label>
             <Select.Root value={selectedGame} onValueChange={setSelectedGame}>
               <Select.Trigger
+                data-cy="select-game"
                 aria-label="game"
                 className="bg-zinc-800 rounded px-4 py-3 text-sm flex items-center justify-between"
               >
