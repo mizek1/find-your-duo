@@ -69,41 +69,29 @@ export function CreateAdModal() {
             <label className="font-semibold" htmlFor="game">
               Qual o game?
             </label>
-            <Select.Root value={selectedGame} onValueChange={setSelectedGame}>
-              <Select.Trigger
-                data-cy="select-game"
-                aria-label="game"
-                className="bg-zinc-800 rounded px-4 py-3 text-sm flex items-center justify-between"
-              >
-                <Select.Value
-                  className="text-zinc-400"
-                  placeholder="Selecione o game que deseja jogar"
-                />
-                <Select.Icon className="text-zinc-400">
-                  <CaretDown />
-                </Select.Icon>
-              </Select.Trigger>
-              <Select.Portal>
-                <Select.Content className="overflow-hidden bg-zinc-800 rounded">
-                  <Select.Viewport className="p-3">
-                    {games.map((game) => {
-                      return (
-                        <Select.Item
-                          className="text-white flex items-center gap-2 py-1 px-3 rounded hover:bg-blue-600 hover:cursor-pointer"
-                          value={game.id}
-                          key={game.id}
-                        >
-                          <Select.ItemText>{game.title}</Select.ItemText>
-                          <Select.ItemIndicator className="text-blue-600">
-                            <Check />
-                          </Select.ItemIndicator>
-                        </Select.Item>
-                      );
-                    })}
-                  </Select.Viewport>
-                </Select.Content>
-              </Select.Portal>
-            </Select.Root>
+            <select
+              data-cy="select-game"
+              aria-label="game"
+              className="bg-zinc-800 rounded px-4 py-3 text-sm flex items-center justify-between"
+              name="game"
+              id="game"
+              placeholder="Selecione o game que deseja jogar"
+              value={selectedGame}
+              onChange={(event) => setSelectedGame(event.target.value)}
+            >
+              {games.map((game) => {
+                return (
+                  <option
+                    className="text-white flex items-center gap-2 py-1 px-3 rounded hover:bg-blue-600 hover:cursor-pointer"
+                    value={game.id}
+                    key={game.id}
+                    data-cy={game.title}
+                  >
+                    {game.title}
+                  </option>
+                );
+              })}
+            </select>
           </div>
 
           <div className="flex flex-col gap-2">
